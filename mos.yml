@@ -1,0 +1,47 @@
+author: ZenDIY
+description: Mongoose OS demo firmware for using Zen Switches
+# arch: PLATFORM
+version: 1.0
+manifest_version: 2017-05-18
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+config_schema: 
+  - ["app", "o", {title: "App settings"}]
+  - ["app.relays_active_high", "b", false, {title: "True if realy is on when output is high (1)"}]
+  
+  - ["app.relay1", "o", {title: "Relay #1 settings"}]
+  - ["app.relay1.id", "s", "sw1", {title: "Relay ID"}]
+  - ["app.relay1.pin", "i", 5, {title: "Relay GPIO pin"}]
+   
+  - ["app.relay2", "o", {title: "Relay #2 settings"}]
+  - ["app.relay2.id", "s", "sw2", {title: "Relay ID"}]
+  - ["app.relay2.pin", "i", 4, {title: "Relay GPIO pin"}]
+     
+# - ["debug.level", 3]
+
+includes:
+  - include
+sources:
+  # NOTE: comment the row below and exclude 'mjs' library
+  # in [libs] section to disable C/C++ demo.
+  - src
+  # NOTE: remove the comment below and include 'mjs' library
+  # in [libs] section to enable the JS demo.
+  #- src_js
+tags:
+  - js
+filesystem:
+  - fs
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/boards
+  - origin: https://github.com/mongoose-os-libs/rpc-common
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/zendiy-mgos/zswitch-gpio
+
+  # NOTE: remove comment below and use the 'src_js' as sources folder
+  # to enable the JS demo (see ./fs/init.js).
+  #- origin: https://github.com/mongoose-os-libs/mjs
