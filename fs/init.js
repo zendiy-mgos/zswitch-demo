@@ -16,7 +16,7 @@ function stateHandler(act, state, pinCfg) {
   let pin = Cfg.get(pinCfg);
   let isah = Cfg.get('app.relays_active_high');
   if (act === ZenThing.ACT_STATE_SET) {
-    print('Reading state of switch ', state.thing.id);
+    print('Setting state of switch ', state.thing.id);
     if (state.value) {
       /* switch ON */
       GPIO.write(pin, (isah ? 1 : 0));
